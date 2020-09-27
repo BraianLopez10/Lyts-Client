@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/Lyts-Client/static/css/main.cdd9e698.chunk.css",
+    "main.js": "/Lyts-Client/static/js/main.b7b8be62.chunk.js",
+    "main.js.map": "/Lyts-Client/static/js/main.b7b8be62.chunk.js.map",
+    "runtime-main.js": "/Lyts-Client/static/js/runtime-main.c3d850fc.js",
+    "runtime-main.js.map": "/Lyts-Client/static/js/runtime-main.c3d850fc.js.map",
+    "static/js/2.c4473a2a.chunk.js": "/Lyts-Client/static/js/2.c4473a2a.chunk.js",
+    "static/js/2.c4473a2a.chunk.js.map": "/Lyts-Client/static/js/2.c4473a2a.chunk.js.map",
+    "index.html": "/Lyts-Client/index.html",
+    "precache-manifest.476c159ff3c42b374cde048080685889.js": "/Lyts-Client/precache-manifest.476c159ff3c42b374cde048080685889.js",
+    "service-worker.js": "/Lyts-Client/service-worker.js",
+    "static/css/main.cdd9e698.chunk.css.map": "/Lyts-Client/static/css/main.cdd9e698.chunk.css.map",
+    "static/js/2.c4473a2a.chunk.js.LICENSE.txt": "/Lyts-Client/static/js/2.c4473a2a.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c3d850fc.js",
+    "static/js/2.c4473a2a.chunk.js",
+    "static/css/main.cdd9e698.chunk.css",
+    "static/js/main.b7b8be62.chunk.js"
+  ]
+}
