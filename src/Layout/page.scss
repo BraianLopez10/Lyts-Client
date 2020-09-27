@@ -1,0 +1,16 @@
+.wrapper-app {
+  height: 100vh;
+  position: relative;
+  &__content-app {
+    margin: 0 10px;
+    padding-bottom: 100px;
+  }
+  @media screen and (min-width: 880px) {
+    & {
+      padding-top: 80px;
+    }
+    &__content-app {
+      margin: 0 50px;
+    }
+  }
+}

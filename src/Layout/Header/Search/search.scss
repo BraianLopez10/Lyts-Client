@@ -1,0 +1,30 @@
+.input-search-container {
+  margin: auto;
+  border-radius: 5px;
+  background-color: #e0e0e0;
+  position: relative;
+  width: 370px;
+  .search-icon {
+    position: absolute;
+    padding: 4px;
+  }
+  
+  .input-search {
+    margin-left: 40px;
+  }
+  .result-search{
+    position: absolute;
+    background-color: white;
+    z-index: 999;
+    width: 370px;
+    box-sizing: border-box;
+    padding: 10px;
+    border-radius: 10px;
+    top: 40px;
+    -webkit-box-shadow: 0px 0px 8px 6px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 0px 8px 6px rgba(0,0,0,0.5);
+    box-shadow: 0px 0px 8px 6px rgba(0,0,0,0.5);
+    
+  }
+  
+}

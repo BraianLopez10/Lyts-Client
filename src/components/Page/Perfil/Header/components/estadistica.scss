@@ -1,0 +1,12 @@
+.info-header {
+  display: flex;
+  p {
+    font-weight: lighter;
+    margin: 0;
+    margin-right: 25px;
+    cursor: pointer;
+  }
+  p:hover {
+    color: black;
+  }
+}

@@ -1,0 +1,42 @@
+.wrap-list-to-follow{
+    width: 100%;
+    padding: 3px 10px;
+    margin-top: 10px;
+    border-radius: 10px;
+    .sugerencias {
+        font-size: 20px;
+        color: gray;
+    }
+    .p-by{
+        font-family: cursive;
+        font-size: 0.6em;
+        color: black;
+        margin-top: 10px;
+        text-align: center;
+    }
+}
+.list-to-follow{
+    min-height: 250px;
+    
+    .name-avatar{
+        display: flex;
+        align-items: center;
+        p{
+            margin-left: 10px;
+        }
+    }
+    .wrap-to-follow{
+        display: flex;
+        justify-content: space-between;
+        .nombre-to-follow{
+            font-size: 0.9em;
+            text-align: left;
+            font-weight: bold;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .enlace-to-follow{
+            text-decoration: none;
+            color: black;
+        }
+    }
+}

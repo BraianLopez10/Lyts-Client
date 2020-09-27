@@ -1,0 +1,47 @@
+.add-photo {
+  position: absolute;
+  left: calc(50% - 400px / 2);
+  z-index: 9999;
+  background-color: var(--Primary-dark);
+  height: 450px;
+  width: 400px;
+  border-radius: 5px;
+  &__content {
+    display: block;
+    box-sizing: border-box;
+    padding: 20px;
+    &__body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      &-img {
+        border-radius: 5px;
+        outline: none;
+        border: 0;
+        margin: 20px 0;
+        object-fit: cover;
+        background-color: var(--Secondary-dark);
+      }
+    }
+    &__header {
+      position: relative;
+      button {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        font-weight: bold;
+        cursor: pointer;
+        top: -20px;
+        right: -20px;
+      }
+      &-h1 {
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        margin-bottom: 20px;
+        color: white;
+      }
+    }
+  }
+}

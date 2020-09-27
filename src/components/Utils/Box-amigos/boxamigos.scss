@@ -1,0 +1,38 @@
+.box-amigos-section {
+  height: 100px;
+  overflow: hidden;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  max-width: 600px;
+  margin: auto;
+  margin-bottom: 20px;
+  border: 1px solid #e3e3e3;
+  .wrap-user-box {
+    margin: 0 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+  }
+  .avatar-box-section {
+    text-decoration: none;
+    color: black;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+    .avatar {
+      width: 50px !important;
+      height: 50px !important;
+    }
+    p {
+      font-size: 0.8em;
+      margin: 0;
+      padding: 0;
+      margin-top: 5px;
+      font-family: inherit;
+      font-weight: bolder;
+    }
+  }
+}

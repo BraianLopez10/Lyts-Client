@@ -1,0 +1,32 @@
+.form-register {
+  max-width: 350px;
+  padding: 0 20px;
+  border-radius: 5px;
+  height: 535px;
+  margin: auto;
+  background-color: white;
+  padding: 20px;
+  border: 0.5px solid rgb(219, 219, 219);
+  &__content {
+    height: auto;
+    box-sizing: border-box;
+    label {
+      margin-left: 5px !important;
+    }
+    &__button {
+      display: flex;
+      justify-content: center;
+      &-button {
+        width: 200px !important;
+      }
+    }
+  }
+  &__footer {
+    text-align: center;
+    &-p {
+      margin-bottom: 0;
+      cursor: pointer;
+      color: var(--GrayishViolet);
+    }
+  }
+}
