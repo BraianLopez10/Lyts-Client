@@ -78,7 +78,6 @@ const getUser = (id) => {
 };
 
 const getPost = (id) => {
-  console.log(id);
   let url = `${urlApi}post/${id}`;
 
   return axios.get(url);

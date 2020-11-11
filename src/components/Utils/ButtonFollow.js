@@ -36,7 +36,6 @@ const ButtonFollow = (props) => {
     props.dispatch(setFollow(userPerfil)).then(() => {
       setFollowState(true);
     }).catch((err) => {
-      console.log(err);
     });
   };
   const handleUnFollow = async () => {
@@ -46,7 +45,6 @@ const ButtonFollow = (props) => {
         setFollowState(false);
       })
       .catch((err) => {
-        console.log(err);
       });
   };
   return (

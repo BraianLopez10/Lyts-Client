@@ -23,7 +23,6 @@ const reducerInterfaz = (state = initialState, action) => {
         authorization: action.payload.valor
       };
     case SET_MESSAGE_INFO:
-      console.log(action.payload.messageInfo);
       return {
         ...state,
         messageInfo: action.payload.messageInfo

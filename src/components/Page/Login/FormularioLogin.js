@@ -12,11 +12,9 @@ const FormularioLogin = (props) => {
   const [loading, setLoading] = React.useState(false);
   const handleLogin = async (data) => {
     const { userName, password } = data;
-    console.log(data);
     try {
       setLoading(true);
       let response = await props.dispatch(signin({ userName, password }));
-      console.log(response);
       setLoading(false);
     } catch {
       setLoading(false);

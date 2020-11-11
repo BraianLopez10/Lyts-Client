@@ -9,7 +9,6 @@ const FormularioRegistro = (props) => {
   const { register, handleSubmit, errors } = useForm();
   const [error, setError] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
-  console.log(errors);
   const responseFacebook = (response) => {
     if (!response.accessToken) return false;
     props.dispatch(siginFacebook(response.accessToken));
@@ -35,10 +34,8 @@ const FormularioRegistro = (props) => {
         signup({ userName, password, email, name })
       );
       if (response) {
-        console.log(response);
       }
     } catch (err) {
-      console.log(err);
     }
     setLoading(false);
   };

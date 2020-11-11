@@ -47,7 +47,6 @@ export default function reducerUser(state = initialState, action) {
         (data.lastname = action.payload.user.lastname);
       action.payload.user.bio && (data.bio = action.payload.user.bio);
       action.payload.user.img && (data.img = action.payload.user.img);
-      console.log(data);
       return {
         ...state,
         ...data

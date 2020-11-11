@@ -98,7 +98,6 @@ export const getUser = (id) => {
           resolve();
         })
         .catch((err) => {
-          console.log(err);
           reject(err);
         });
     });

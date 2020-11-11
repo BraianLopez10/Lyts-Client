@@ -13,7 +13,6 @@ const AddPhoto = (props) => {
     setText(e.target.value);
   };
   const openFile = () => {
-    console.log(file.current);
     file.current.click();
   };
   const close = () => {
@@ -29,8 +28,6 @@ const AddPhoto = (props) => {
     e.preventDefault();
     if (!text) return false;
     let formData = new FormData(form.current);
-    console.log(formData.get("titlePost"));
-    console.log(formData.get("img"));
     props
       .dispatch(addPost(formData))
       .then(() => {

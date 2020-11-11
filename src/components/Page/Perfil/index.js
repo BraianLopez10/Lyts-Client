@@ -19,7 +19,6 @@ function Perfil(props) {
           setUserAdmin(true);
           setLoadingUi(false);
         } else {
-          console.log("No es");
           try {
             await props.dispatch(getUserProfile(username));
             setUserAdmin(false);

@@ -66,7 +66,6 @@ export const getPost = (idPost) => {
           resolve();
         })
         .catch((err) => {
-          console.log(err);
           reject(err);
         });
     });

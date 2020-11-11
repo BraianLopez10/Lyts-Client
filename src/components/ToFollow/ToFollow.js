@@ -14,7 +14,6 @@ function ToFollow(props) {
 
             try {
                 let result = await api.userToFollow()
-                console.log(result)
                 setToFollow(result.data)
             }catch{
 

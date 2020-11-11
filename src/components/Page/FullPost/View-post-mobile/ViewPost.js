@@ -16,7 +16,6 @@ const ViewPost = (props) => {
     if (props.userLogged._id === props.post.user._id) setIsAdmin(true);
   }, [props.post.user._id]);
 
-  console.log(props)
   const deletePost = async (idPost) => {
 
     try {

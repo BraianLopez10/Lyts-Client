@@ -7,8 +7,7 @@ export const getToken = () => {
     let token = localStorage.getItem("token").split(" ")[1];
     if (token) {
       try {
-        let decode = jwt.decode(token, "tokeninstragram");
-
+        let decode = jwt.verify(token, process.env.REACT_APP_TOKEN_SECRET);
         if (decode.exp <= moment().unix()) {
           return false;
         } else {
