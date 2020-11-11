@@ -1,10 +1,13 @@
 import axios from "axios";
 import { setHeader } from "./AuthJwt";
+
 let urlApi = "http://localhost:4000/api/v1/";
 let urlApiAuth = "http://localhost:4000/";
 
 let urlApiDocker = "http://192.168.0.75:4000/api/v1/";
 let urlAuthDocker = "http://192.168.0.75:4000/";
+
+let prodUrl = "https://lyts-backend.herokuapp.com/"
 
 // CONSULTAS DATOS
 
@@ -12,7 +15,7 @@ setHeader();
 
 const authFacebook = (access_token) => {
   return axios({
-    url: `${urlApiAuth}auth/facebook`,
+    url: `${prodUrl}auth/facebook`,
     method: "POST",
     data: {
       access_token,
@@ -20,13 +23,13 @@ const authFacebook = (access_token) => {
   });
 };
 const disLike = (id) => {
-  const url = `${urlApi}like/${id}`;
+  const url = `${prodUrl}like/${id}`;
   return axios.delete(url);
 };
 
 const getPostFollows = () => {
   const option = {
-    url: `${urlApi}post/feed/`,
+    url: `${prodUrl}post/feed/`,
     method: "GET",
     headers: { "Content-Type": "application/json" },
   };
@@ -34,7 +37,7 @@ const getPostFollows = () => {
 };
 
 const like = (id) => {
-  return axios.post(`${urlApi}like`, {
+  return axios.post(`${prodUrl}like`, {
     data: {
       post: id,
     },
@@ -42,7 +45,7 @@ const like = (id) => {
 };
 
 const addComment = (idPost, comment) => {
-  return axios.post(`${urlApi}comment`, {
+  return axios.post(`${prodUrl}comment`, {
     post: idPost,
     content: comment,
   });
@@ -54,7 +57,7 @@ const signIn = (data) => {
   const { userName, password } = data;
   const option = {
     //Datos consulta
-    url: `${urlApiAuth}auth/signin`,
+    url: `${prodUrl}auth/signin`,
     method: "POST",
     headers: { "Content-Type": "application/json" },
     data: {
@@ -67,35 +70,35 @@ const signIn = (data) => {
 };
 
 const signup = (data) => {
-  return axios.post(`${urlApiAuth}auth/signup`, {
+  return axios.post(`${prodUrlAuth}auth/signup`, {
     ...data,
   });
 };
 
 const getUser = (id) => {
-  const url = `${urlApi}api/v1/user/${id}`;
+  const url = `${prodUrl}api/v1/user/${id}`;
   return axios.get(url);
 };
 
 const getPost = (id) => {
-  let url = `${urlApi}post/${id}`;
+  let url = `${prodUrl}post/${id}`;
 
   return axios.get(url);
 };
 
 const getUserProfile = (userName) => {
-  return axios.get(`${urlApi}user/username/${userName}`);
+  return axios.get(`${prodUrl}user/username/${userName}`);
 };
 
 const setFollow = (idFollow) => {
-  let url = `${urlApi}follow`;
+  let url = `${prodUrl}follow`;
   return axios.post(url, {
     follow: idFollow,
   });
 };
 
 const unSetFollow = (idFollow) => {
-  let url = `${urlApi}follow`;
+  let url = `${prodUrl}follow`;
   return axios.delete(url, {
     data: {
       follow: idFollow,
@@ -104,7 +107,7 @@ const unSetFollow = (idFollow) => {
 };
 
 const editProfile = (data) => {
-  let url = `${urlApi}user`;
+  let url = `${prodUrl}user`;
   return axios({
     method: "PATCH",
     url,
@@ -116,7 +119,7 @@ const editProfile = (data) => {
 };
 
 const getAllPosts = () => {
-  let url = `${urlApi}post`;
+  let url = `${prodUrl}post`;
 
   return axios({
     method: "GET",
@@ -125,7 +128,7 @@ const getAllPosts = () => {
 };
 
 const addPost = (data) => {
-  let url = `${urlApi}post`;
+  let url = `${prodUrl}post`;
   return axios({
     method: "POST",
     url,
@@ -134,7 +137,7 @@ const addPost = (data) => {
 };
 
 const deletePost = (idPost) => {
-  let url = `${urlApi}post`;
+  let url = `${prodUrl}post`;
 
   return axios({
     method: "DELETE",
@@ -145,17 +148,17 @@ const deletePost = (idPost) => {
   });
 };
 const search = (userName) => {
-  let url = `${urlApi}user/search/${userName}`;
+  let url = `${prodUrl}user/search/${userName}`;
   return axios(url);
 };
 
 const getDataUserLogged = () => {
-  let url = `${urlApi}user`;
+  let url = `${prodUrl}user`;
   return axios(url);
 };
 
 const userToFollow = () => {
-  let url = `${urlApi}user/tofollow`
+  let url = `${prodUrl}user/tofollow`
   return axios(url)
 }
 
