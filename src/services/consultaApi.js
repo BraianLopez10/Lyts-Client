@@ -1,13 +1,15 @@
 import axios from "axios";
 import { setHeader } from "./AuthJwt";
 
-let urlApi = "http://localhost:4000/api/v1/";
-let urlApiAuth = "http://localhost:4000/";
+let prodUrl= ""
 
-let urlApiDocker = "http://192.168.0.75:4000/api/v1/";
-let urlAuthDocker = "http://192.168.0.75:4000/";
+if (process.env.NODE_ENV === 'development') {
+  prodUrl="http://localhost:4000/"
+}
+if (process.env.NODE_ENV === 'production'){
+  prodUrl = "https://lyts-backend.herokuapp.com/"
+}
 
-let prodUrl = "https://lyts-backend.herokuapp.com/"
 
 // CONSULTAS DATOS
 
@@ -23,13 +25,13 @@ const authFacebook = (access_token) => {
   });
 };
 const disLike = (id) => {
-  const url = `${prodUrl}like/${id}`;
+  const url = `${prodUrl}api/v1/like/${id}`;
   return axios.delete(url);
 };
 
 const getPostFollows = () => {
   const option = {
-    url: `${prodUrl}post/feed/`,
+    url: `${prodUrl}api/v1/post/feed/`,
     method: "GET",
     headers: { "Content-Type": "application/json" },
   };
@@ -37,7 +39,7 @@ const getPostFollows = () => {
 };
 
 const like = (id) => {
-  return axios.post(`${prodUrl}like`, {
+  return axios.post(`${prodUrl}api/v1/like`, {
     data: {
       post: id,
     },
@@ -45,7 +47,7 @@ const like = (id) => {
 };
 
 const addComment = (idPost, comment) => {
-  return axios.post(`${prodUrl}comment`, {
+  return axios.post(`${prodUrl}api/v1/comment`, {
     post: idPost,
     content: comment,
   });
@@ -70,7 +72,7 @@ const signIn = (data) => {
 };
 
 const signup = (data) => {
-  return axios.post(`${prodUrlAuth}auth/signup`, {
+  return axios.post(`${prodUrl}auth/signup`, {
     ...data,
   });
 };
@@ -81,24 +83,24 @@ const getUser = (id) => {
 };
 
 const getPost = (id) => {
-  let url = `${prodUrl}post/${id}`;
+  let url = `${prodUrl}api/v1/post/${id}`;
 
   return axios.get(url);
 };
 
 const getUserProfile = (userName) => {
-  return axios.get(`${prodUrl}user/username/${userName}`);
+  return axios.get(`${prodUrl}api/v1/user/username/${userName}`);
 };
 
 const setFollow = (idFollow) => {
-  let url = `${prodUrl}follow`;
+  let url = `${prodUrl}api/v1/follow`;
   return axios.post(url, {
     follow: idFollow,
   });
 };
 
 const unSetFollow = (idFollow) => {
-  let url = `${prodUrl}follow`;
+  let url = `${prodUrl}api/v1/follow`;
   return axios.delete(url, {
     data: {
       follow: idFollow,
@@ -107,7 +109,7 @@ const unSetFollow = (idFollow) => {
 };
 
 const editProfile = (data) => {
-  let url = `${prodUrl}user`;
+  let url = `${prodUrl}api/v1/user`;
   return axios({
     method: "PATCH",
     url,
@@ -119,7 +121,7 @@ const editProfile = (data) => {
 };
 
 const getAllPosts = () => {
-  let url = `${prodUrl}post`;
+  let url = `${prodUrl}api/v1/post`;
 
   return axios({
     method: "GET",
@@ -128,7 +130,7 @@ const getAllPosts = () => {
 };
 
 const addPost = (data) => {
-  let url = `${prodUrl}post`;
+  let url = `${prodUrl}api/v1/post`;
   return axios({
     method: "POST",
     url,
@@ -137,7 +139,7 @@ const addPost = (data) => {
 };
 
 const deletePost = (idPost) => {
-  let url = `${prodUrl}post`;
+  let url = `${prodUrl}api/v1/post`;
 
   return axios({
     method: "DELETE",
@@ -148,17 +150,17 @@ const deletePost = (idPost) => {
   });
 };
 const search = (userName) => {
-  let url = `${prodUrl}user/search/${userName}`;
+  let url = `${prodUrl}api/v1/user/search/${userName}`;
   return axios(url);
 };
 
 const getDataUserLogged = () => {
-  let url = `${prodUrl}user`;
+  let url = `${prodUrl}api/v1/user`;
   return axios(url);
 };
 
 const userToFollow = () => {
-  let url = `${prodUrl}user/tofollow`
+  let url = `${prodUrl}api/v1/user/tofollow`
   return axios(url)
 }
 
