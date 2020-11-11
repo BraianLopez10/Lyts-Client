@@ -22,10 +22,7 @@ function Login(props) {
       alignItems="center"
       className="login"
     >
-      <Grid item>
-        <div></div>
-      </Grid>
-      <Grid item>
+      <Grid item className="form-container-login">
         {modeLogin === "login" ? (
           <FormularioLogin handleMode={handleMode}></FormularioLogin>
         ) : (

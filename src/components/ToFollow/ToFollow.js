@@ -1,27 +1,26 @@
-import React, { useEffect, useState } from 'react'
+import React ,  { useEffect, useState } from 'react'
 
 import { Avatar, Typography } from '@material-ui/core';
 import { Link } from 'react-router-dom'
 import ButtonFollow from '../Utils/ButtonFollow'
-
+import api from '../../services/consultaApi'
 
 import './tofollow.scss'
 function ToFollow(props) {
     const [toFollow, setToFollow] = useState([]);
 
     useEffect(() => {
+        async function getData () {
 
-        let token = localStorage.getItem('token');
-        fetch('api/v1/user/tofollow', {
-            headers: new Headers({
-                'Authorization': token
-            })
-        })
-            .then((response) => {
-                return response.json()
-            }).then((data) => {
-                setToFollow(data);
-            })
+            try {
+                let result = await api.userToFollow()
+                console.log(result)
+                setToFollow(result.data)
+            }catch{
+
+            }
+        }
+        getData();
     }, [])
 
 

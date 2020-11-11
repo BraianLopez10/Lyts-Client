@@ -9,7 +9,6 @@ function FullPost(props) {
   const [isLoaded, setIsLoaded] = React.useState(false);
   const [error, setError] = React.useState(false);
   const { idPost } = useParams();
-  console.log(idPost);
   React.useEffect(() => {
     const getPost = async () => {
       try {
@@ -29,7 +28,7 @@ function FullPost(props) {
         {isLoaded ? (
           error ? (
             <Typography variant="body1" align="center">
-              El post no existe
+              El post no existe :(
             </Typography>
           ) : (
             <ViewPostMobile post={props.post}></ViewPostMobile>

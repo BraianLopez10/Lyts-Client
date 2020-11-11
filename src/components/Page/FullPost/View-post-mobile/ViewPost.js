@@ -1,28 +1,37 @@
 import React, { useEffect } from "react";
 import { Typography, Avatar, Button } from "@material-ui/core";
-import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import ButtonLike from "../../../Utils/Post/Like/ButtonLike";
 import ButtonComment from "../../../Utils/Post/Comentario/ButtonComment";
-
 import { Comments } from "./Comments";
 import AddComment from "../../../Utils/Post/Comentario/AddComment";
-
 import { connect } from "react-redux";
-
 import ButtonFollow from "../../../Utils/ButtonFollow";
 import "./style.scss";
+import { DeleteOutlineOutlined } from "@material-ui/icons";
+import api from '../../../../services/consultaApi'
 
 const ViewPost = (props) => {
   const [isAdmin, setIsAdmin] = React.useState(false);
   useEffect(() => {
     if (props.userLogged._id === props.post.user._id) setIsAdmin(true);
   }, [props.post.user._id]);
+
+  console.log(props)
+  const deletePost = async (idPost) => {
+
+    try {
+      await api.deletePost(idPost);
+      window.location.reload()
+    }catch {
+      alert("No se pudo borrar , intentalo más tarde")
+    }
+
+  }
   return (
     <div className="wrap-fullpost">
       <div className="image-full-post">
         <img
           src={props.post.img}
-          style={{ objectFit: "cover" }}
           alt={props.post.caption}
           height="600px"
           width="600px"
@@ -35,8 +44,11 @@ const ViewPost = (props) => {
             <Typography>{props.post.user.userName}</Typography>
             {isAdmin ? (
               <div className="button-opciones">
-                <Button>
-                  <ArrowDropDownIcon></ArrowDropDownIcon>
+                <Button onClick={ () => {
+                  deletePost(props.post._id)
+                }}>
+                  <DeleteOutlineOutlined
+                  ></DeleteOutlineOutlined>
                 </Button>
               </div>
             ) : (
