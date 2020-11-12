@@ -69,14 +69,16 @@ export const siginFacebook = (access_token) => {
           dispatch({
             type: SET_USER,
             payload: {
-              user: res.data,
+              user: res.data.data,
             },
           });
           dispatch(errorLogin(""));
           dispatch(setAuthorization(true));
+          resolve()
         })
         .catch((err) => {
           dispatch(errorLogin("Revisa tus credenciales"));
+          reject()
         });
     });
   };

@@ -9,22 +9,12 @@ const FormularioRegistro = (props) => {
   const { register, handleSubmit, errors } = useForm();
   const [error, setError] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
+  const [message , setMessage] = React.useState("")
+
   const responseFacebook = (response) => {
     if (!response.accessToken) return false;
     props.dispatch(siginFacebook(response.accessToken));
-  };
-  // const handleInput = (e) => {
-  //   setDataForm({ ...dataForm, [e.target.name]: e.target.value });
-  // };
-
-  // const formComplete = () => {
-  //   const { userName, password, email, name } = dataForm;
-  //   if (userName && password && email && name) {
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
-  // };
+  }
 
   const handleRegister = async (data) => {
     setLoading(true);
@@ -34,8 +24,11 @@ const FormularioRegistro = (props) => {
         signup({ userName, password, email, name })
       );
       if (response) {
+        setMessage("Registrado con exito")
       }
     } catch (err) {
+      setMessage("Error en tu registro")
+
     }
     setLoading(false);
   };
@@ -106,6 +99,7 @@ const FormularioRegistro = (props) => {
           </div>
         </form>
         <div className="form-register__footer">
+            {message !== "" && <p>{message}</p>}
           <p className="form-register__footer-p" onClick={props.handleMode}>
             ¿Tienes una cuenta? Inicia Sesión
           </p>

@@ -1,15 +1,39 @@
-import React from "react";
-import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
-import { input, Button, CircularProgress } from "@material-ui/core";
+import React , {useEffect} from "react";
+import {  Button, CircularProgress } from "@material-ui/core";
 //Redux
 import { connect } from "react-redux";
-import { signin, siginFacebook } from "../../../Redux/actions/actionUser";
+import { signin , siginFacebook } from "../../../Redux/actions/actionUser";
 import { useForm } from "react-hook-form";
+import {FacebookLoginButton} from 'react-social-login-buttons'
+import {loadFbLoginApi} from '../../../hooks/loadSdkFacebook'
 import "./formularioLogin.scss";
 
 const FormularioLogin = (props) => {
+  useEffect(() => {
+    loadFbLoginApi()
+  },[])
+  const handleLoginFb = () => {
+    window.FB.login(
+      function (response) {
+        // handle the response
+        console.log(response);
+        if(!response.authResponse) return false;
+        if (!response.authResponse.accessToken) return false;
+        try {
+          props.dispatch(siginFacebook(response.authResponse.accessToken));
+        }catch{
+          console.log("error")
+        }
+      },
+      {
+        scope: 'public_profile , email , user_age_range',
+        auth_type: 'rerequest'
+      },
+    );
+  };
   const { register, handleSubmit, errors } = useForm();
   const [loading, setLoading] = React.useState(false);
+
   const handleLogin = async (data) => {
     const { userName, password } = data;
     try {
@@ -20,11 +44,6 @@ const FormularioLogin = (props) => {
       setLoading(false);
     }
   };
-  const responseFacebook = (response) => {
-    if (!response.accessToken) return false;
-    props.dispatch(siginFacebook(response.accessToken));
-  };
-
   return (
     <div className="form-login">
       <div className="form-login__title">
@@ -77,6 +96,7 @@ const FormularioLogin = (props) => {
           </label>
         </div>
       </form>
+      {/* <FacebookLoginButton onClick={handleLoginFb}></FacebookLoginButton> */}
       {/* <div className="inicio-fb">
         <FacebookLogin
           appId="539588920054034"
@@ -94,7 +114,7 @@ const FormularioLogin = (props) => {
           )}
         />
       </div> */}
-
+      <FacebookLoginButton onClick={handleLoginFb}></FacebookLoginButton>
       <div className="form-login__footer">
         <a to="/" className="form-login__footer-a">
           <p>¿Has olvidado la contraseña?</p>
