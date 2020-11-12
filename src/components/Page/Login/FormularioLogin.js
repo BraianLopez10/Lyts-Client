@@ -1,34 +1,33 @@
-import React , {useEffect} from "react";
-import {  Button, CircularProgress } from "@material-ui/core";
+import React, { useEffect } from "react";
+import { Button, CircularProgress } from "@material-ui/core";
 //Redux
 import { connect } from "react-redux";
-import { signin , siginFacebook } from "../../../Redux/actions/actionUser";
+import { signin, siginFacebook } from "../../../Redux/actions/actionUser";
 import { useForm } from "react-hook-form";
-import {FacebookLoginButton} from 'react-social-login-buttons'
-import {loadFbLoginApi} from '../../../hooks/loadSdkFacebook'
+import { FacebookLoginButton } from "react-social-login-buttons";
+import { loadFbLoginApi } from "../../../hooks/loadSdkFacebook";
 import "./formularioLogin.scss";
 
+loadFbLoginApi();
 const FormularioLogin = (props) => {
-  useEffect(() => {
-    loadFbLoginApi()
-  },[])
+  useEffect(() => {}, []);
   const handleLoginFb = () => {
     window.FB.login(
       function (response) {
         // handle the response
         console.log(response);
-        if(!response.authResponse) return false;
+        if (!response.authResponse) return false;
         if (!response.authResponse.accessToken) return false;
         try {
           props.dispatch(siginFacebook(response.authResponse.accessToken));
-        }catch{
-          console.log("error")
+        } catch {
+          console.log("error");
         }
       },
       {
-        scope: 'public_profile , email , user_age_range',
-        auth_type: 'rerequest'
-      },
+        scope: "public_profile , email , user_age_range",
+        auth_type: "rerequest",
+      }
     );
   };
   const { register, handleSubmit, errors } = useForm();
