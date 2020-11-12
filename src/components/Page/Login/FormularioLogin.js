@@ -25,8 +25,7 @@ const FormularioLogin = (props) => {
         }
       },
       {
-        scope: "public_profile , email , user_age_range",
-        auth_type: "rerequest",
+        scope: "public_profile , email ",
       }
     );
   };
