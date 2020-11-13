@@ -35,13 +35,7 @@ const SinglePost = (props) => {
           username={props.post.user.userName}
         ></TitlePostWithAvatar>
         <div className="singlepost__header__img">
-          <img
-            style={{ objectFit: "cover" }}
-            height="500px"
-            width="500px"
-            alt={props.post.caption}
-            src={props.post.img}
-          ></img>
+          <img alt={props.post.caption} src={props.post.img}></img>
         </div>
       </div>
       <div className="singlepost__action">

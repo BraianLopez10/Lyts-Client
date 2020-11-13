@@ -12,9 +12,9 @@
   bottom: 0;
   margin: auto;
   border-radius: 5px;
-  -webkit-box-shadow: 3px 0px 74px -14px rgba(0,0,0,0.75);
-  -moz-box-shadow: 3px 0px 74px -14px rgba(0,0,0,0.75);
-  box-shadow: 3px 0px 74px -14px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 3px 0px 74px -14px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 3px 0px 74px -14px rgba(0, 0, 0, 0.75);
+  box-shadow: 3px 0px 74px -14px rgba(0, 0, 0, 0.75);
   &__content {
     display: block;
     box-sizing: border-box;
@@ -30,7 +30,6 @@
         border: 0;
         margin: 20px 0;
         object-fit: cover;
-        background-color: var(--Secondary-dark);
       }
     }
     &__header {

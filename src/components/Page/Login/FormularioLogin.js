@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { signin, siginFacebook } from "../../../Redux/actions/actionUser";
 import { useForm } from "react-hook-form";
 import { FacebookLoginButton } from "react-social-login-buttons";
-import { loadFbLoginApi } from "../../../hooks/loadSdkFacebook";
+import { loadFbLoginApi } from "../../../Utils/loadSdkFacebook";
 import "./formularioLogin.scss";
 
 loadFbLoginApi();

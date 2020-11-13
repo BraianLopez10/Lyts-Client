@@ -3,6 +3,7 @@ import "./index.scss";
 import { Button } from "@material-ui/core";
 import { addPost } from "../../Redux/actions/actionUser";
 import { connect } from "react-redux";
+
 const AddPhoto = (props) => {
   const [text, setText] = React.useState("");
   const [image, setImage] = React.useState(null);
@@ -66,7 +67,7 @@ const AddPhoto = (props) => {
           <img
             className="add-photo__content__body-img"
             height="200px"
-            src={image}
+            src={image ? image : "upload.png"}
             width="200px"
             onClick={openFile}
           ></img>

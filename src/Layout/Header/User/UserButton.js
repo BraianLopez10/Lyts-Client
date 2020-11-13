@@ -1,5 +1,5 @@
 import React from "react";
-import { ButtonBase, Avatar } from "@material-ui/core";
+import { ButtonBase, Avatar, Button } from "@material-ui/core";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
@@ -80,8 +80,16 @@ function ExploreButton(props) {
                       size="small"
                       color="secondary"
                       to={"/" + props.userLogged.userName}
+                      style={{ textDecoration: "none " }}
                     >
-                      Perfil
+                      <Button
+                        size="small"
+                        color="primary"
+                        fullWidth
+                        variant="outlined"
+                      >
+                        Perfil
+                      </Button>
                     </Link>
                   </MenuItem>
                   <MenuItem onClick={handleClose}>
