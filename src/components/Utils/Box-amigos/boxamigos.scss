@@ -36,3 +36,22 @@
     }
   }
 }
+.toFollow {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
+  &__content {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+    border: 2px solid blue;
+    border-radius: 10px;
+    &__info {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+    }
+  }
+}

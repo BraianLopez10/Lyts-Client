@@ -24,6 +24,7 @@ function Home(props) {
 
     getDatos();
   }, []);
+  console.log(props.home.allPost.length);
 
   return (
     <>
