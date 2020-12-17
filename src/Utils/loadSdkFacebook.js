@@ -8,8 +8,6 @@ export function loadFbLoginApi() {
       version: "v2.5", // use version 2.1
     });
   };
-
-  console.log("Loading fb api");
   // Load the SDK asynchronously
   (function (d, s, id) {
     var js,

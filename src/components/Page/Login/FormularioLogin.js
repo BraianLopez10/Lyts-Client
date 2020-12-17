@@ -10,18 +10,16 @@ import "./formularioLogin.scss";
 
 loadFbLoginApi();
 const FormularioLogin = (props) => {
-  useEffect(() => {}, []);
+  useEffect(() => { }, []);
   const handleLoginFb = () => {
     window.FB.login(
       function (response) {
         // handle the response
-        console.log(response);
         if (!response.authResponse) return false;
         if (!response.authResponse.accessToken) return false;
         try {
           props.dispatch(siginFacebook(response.authResponse.accessToken));
         } catch {
-          console.log("error");
         }
       },
       {
@@ -79,8 +77,8 @@ const FormularioLogin = (props) => {
               Iniciar Sesión
             </Button>
           ) : (
-            <CircularProgress />
-          )}
+              <CircularProgress />
+            )}
         </div>
         <div
           style={{

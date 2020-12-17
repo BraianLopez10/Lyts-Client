@@ -8,7 +8,6 @@ import ButtonFollow from "../../Utils/ButtonFollow";
 
 function BoxAmigos(props) {
   const [toFollow] = useGetToFollow();
-  console.log(toFollow);
   return (
     <React.Fragment>
       {props.follows.length !== 0 ? (
@@ -30,37 +29,37 @@ function BoxAmigos(props) {
           })}
         </div>
       ) : (
-        <div className="toFollow">
-          <h4 style={{ textAlign: "center" }}>
-            Personas para empezar a seguir 😉
+          <div className="toFollow">
+            <h4 style={{ textAlign: "center" }}>
+              Personas para empezar a seguir 😉
           </h4>
-          {toFollow.map((follow, index) => {
-            return (
-              <>
-                <div className="toFollow__content" key={index}>
-                  <div className="toFollow__content__info">
-                    <Link
-                      to={"/" + follow.userName}
-                      className="enlace-to-follow"
-                    >
-                      <Avatar
-                        src={follow.img}
-                        style={{ width: "30px", height: "30px" }}
-                      ></Avatar>
-                    </Link>
-                    <p className="">{follow.userName}</p>
-                    <ButtonFollow
-                      variant="text"
-                      color="blue"
-                      userPerfil={follow}
-                    ></ButtonFollow>
+            {toFollow.map((follow, index) => {
+              return (
+                <>
+                  <div className="toFollow__content" key={index}>
+                    <div className="toFollow__content__info">
+                      <Link
+                        to={"/" + follow.userName}
+                        className="enlace-to-follow"
+                      >
+                        <Avatar
+                          src={follow.img}
+                          style={{ width: "30px", height: "30px" }}
+                        ></Avatar>
+                      </Link>
+                      <p className="">{follow.userName}</p>
+                      <ButtonFollow
+                        variant="text"
+                        color="blue"
+                        userPerfil={follow}
+                      ></ButtonFollow>
+                    </div>
                   </div>
-                </div>
-              </>
-            );
-          })}
-        </div>
-      )}
+                </>
+              );
+            })}
+          </div>
+        )}
     </React.Fragment>
   );
 }

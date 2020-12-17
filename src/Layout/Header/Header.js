@@ -16,9 +16,9 @@ const Header = (props) => {
           </Link>
         </div>
         <ul className="header-desktop__content__menu">
-          <li className="header-desktop__content__menu-li">
+          <Link to="/" className="header-desktop__content__menu-li">
             <HomeOutlinedIcon style={{ fontSize: "1.1em" }}></HomeOutlinedIcon>
-          </li>
+          </Link>
           <li
             className="header-desktop__content__menu-li"
             onClick={() => {
