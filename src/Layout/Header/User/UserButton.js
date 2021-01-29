@@ -105,7 +105,7 @@ function ExploreButton(props) {
   );
 }
 const mapStateToProps = (state) => ({
-  userLogged: state.userLogged,
+  userLogged: state.auth,
 });
 
 export default connect(mapStateToProps, null)(ExploreButton);

@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "@material-ui/core";
-import { logout } from "../../Redux/actions/actionUser";
+import { logout } from "../../Redux/actions/auth";
 import { connect } from "react-redux";
 function Logout(props) {
   const handleLogout = async () => {

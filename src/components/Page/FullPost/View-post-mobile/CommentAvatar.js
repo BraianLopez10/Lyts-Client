@@ -21,11 +21,10 @@ export const Comment = (props) => {
           username={comment.user.userName}
           content={comment.content}
         ></OneComment>
-        <p className="fecha-comentario" variant="caption">{moment(comment.createdAt).fromNow()}</p>
+        <p className="fecha-comentario" variant="caption">
+          {moment(comment.createdAt).fromNow()}
+        </p>
       </div>
-
-
     </div>
-
   );
 };

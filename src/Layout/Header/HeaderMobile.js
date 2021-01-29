@@ -41,7 +41,7 @@ const HeaderMobile = (props) => {
               </Link>
             </li>
             <li className="header-mobile__content__menu-li">
-              <Link to={`/${props.userLogged.userName}`}>
+              <Link to={`/${props.userLogged.username}`}>
                 <Avatar
                   src={props.userLogged.img}
                   style={{ width: "25px", height: "25px" }}
@@ -56,7 +56,7 @@ const HeaderMobile = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  userLogged: state.userLogged,
+  userLogged: state.auth,
 });
 
 export default connect(mapStateToProps, null)(HeaderMobile);

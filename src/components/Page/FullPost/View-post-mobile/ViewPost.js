@@ -8,7 +8,7 @@ import { connect } from "react-redux";
 import ButtonFollow from "../../../Utils/ButtonFollow";
 import "./style.scss";
 import { DeleteOutlineOutlined } from "@material-ui/icons";
-import api from '../../../../services/consultaApi'
+import api from "../../../../services/api";
 
 const ViewPost = (props) => {
   const [isAdmin, setIsAdmin] = React.useState(false);
@@ -17,15 +17,13 @@ const ViewPost = (props) => {
   }, [props.post.user._id]);
 
   const deletePost = async (idPost) => {
-
     try {
       await api.deletePost(idPost);
-      window.location.reload()
-    }catch {
-      alert("No se pudo borrar , intentalo más tarde")
+      window.location.reload();
+    } catch {
+      alert("No se pudo borrar , intentalo más tarde");
     }
-
-  }
+  };
   return (
     <div className="wrap-fullpost">
       <div className="image-full-post">
@@ -43,11 +41,12 @@ const ViewPost = (props) => {
             <Typography>{props.post.user.userName}</Typography>
             {isAdmin ? (
               <div className="button-opciones">
-                <Button onClick={ () => {
-                  deletePost(props.post._id)
-                }}>
-                  <DeleteOutlineOutlined
-                  ></DeleteOutlineOutlined>
+                <Button
+                  onClick={() => {
+                    deletePost(props.post._id);
+                  }}
+                >
+                  <DeleteOutlineOutlined></DeleteOutlineOutlined>
                 </Button>
               </div>
             ) : (

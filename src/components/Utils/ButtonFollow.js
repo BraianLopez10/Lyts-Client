@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { Button } from "@material-ui/core";
 
 import { connect } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 
-import { setFollow, unSetFollow } from "../../Redux/actions/actionUser";
+import { setFollow, unSetFollow } from "../../Redux/actions/user";
 
 const useStyles = makeStyles((theme) => ({
   margin: {
@@ -16,66 +16,57 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ButtonFollow = (props) => {
-  const { userPerfil, userLogged } = props;
-  const [followState, setFollowState] = React.useState(false);
-
-  React.useEffect(() => {
-    let index = userLogged.follows.findIndex(
-      (follow) => follow.follow._id === userPerfil._id
-    );
-    if (index === -1) {
-      setFollowState(false);
-    } else {
-      setFollowState(true);
-    }
-  }, [userPerfil._id]);
+const ButtonFollow = ({ idUser, userLogged, ...props }) => {
   const classes = useStyles();
+  const res = userLogged.follows.find((f) => f._id === idUser);
+  let initialValue;
+  if (res) {
+    initialValue = true;
+  } else {
+    initialValue = false;
+  }
 
+  const [follow, setFollowState] = useState(initialValue);
   const handleFollow = async () => {
-    props.dispatch(setFollow(userPerfil)).then(() => {
+    try {
+      await props.dispatch(setFollow(idUser));
       setFollowState(true);
-    }).catch((err) => {
-    });
+    } catch {}
   };
   const handleUnFollow = async () => {
-    props
-      .dispatch(unSetFollow(userPerfil))
-      .then(() => {
-        setFollowState(false);
-      })
-      .catch((err) => {
-      });
+    try {
+      await props.dispatch(unSetFollow(idUser));
+      setFollowState(false);
+    } catch (error) {}
   };
   return (
     <React.Fragment>
-      {!followState ? (
+      {!follow ? (
         <Button
           variant={props.variant || "contained"}
           size="small"
           color="inherit"
           className={classes.margin}
           onClick={handleFollow}
-
         >
           Seguir
         </Button>
       ) : (
-          <Button
-            variant={props.variant || "contained"}
-            size="small"
-            color="primary"
-            className={classes.margin}
-            onClick={handleUnFollow}
-          >
-            Siguiendo
-          </Button>
-        )}
+        <Button
+          variant={props.variant || "contained"}
+          size="small"
+          color="primary"
+          className={classes.margin}
+          onClick={handleUnFollow}
+        >
+          Siguiendo
+        </Button>
+      )}
     </React.Fragment>
   );
 };
 const mapStateToProps = (state) => ({
-  userLogged: state.userLogged,
+  userLogged: state.auth,
 });
 
 export default connect(mapStateToProps, null)(ButtonFollow);

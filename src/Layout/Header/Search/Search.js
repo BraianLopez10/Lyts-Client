@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 // MaterializeUI
 import { InputBase } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
-import Api from "../../../services/consultaApi";
+import Api from "../../../services/api";
 import AvatarAmigo from "../../../components/Utils/AvatarAmigo";
 import { Link } from "react-router-dom";
 import "./search.scss";

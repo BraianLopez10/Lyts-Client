@@ -1,15 +1,14 @@
 import { combineReducers } from "redux";
-import reducerAnyPerfil from "./reducerAnyPerfil";
-import reducerUser from "./reducerUser";
-import reducerInterfaz from "./reducerUi";
-import reducerHome from "./reducerHome";
-import reducerGlobal from "./reducerGlobal";
+import reducerPerfil from "./Perfil";
+import reducerAuth from "./Auth";
+import reducerInterfaz from "./Ui";
+import reducerHome from "./Home";
+
 const reducers = combineReducers({
-  userLogged: reducerUser,
-  anyPerfil: reducerAnyPerfil,
+  perfil: reducerPerfil,
   ui: reducerInterfaz,
   home: reducerHome,
-  global: reducerGlobal,
+  auth: reducerAuth,
 });
 
 export default reducers;

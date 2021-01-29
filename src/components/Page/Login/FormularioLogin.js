@@ -2,43 +2,31 @@ import React, { useEffect } from "react";
 import { Button, CircularProgress } from "@material-ui/core";
 //Redux
 import { connect } from "react-redux";
-import { signin, siginFacebook } from "../../../Redux/actions/actionUser";
+import { signin, signGoogle } from "../../../Redux/actions/auth";
 import { useForm } from "react-hook-form";
-import { FacebookLoginButton } from "react-social-login-buttons";
-import { loadFbLoginApi } from "../../../Utils/loadSdkFacebook";
 import "./formularioLogin.scss";
 
-loadFbLoginApi();
 const FormularioLogin = (props) => {
-  useEffect(() => { }, []);
-  const handleLoginFb = () => {
-    window.FB.login(
-      function (response) {
-        // handle the response
-        if (!response.authResponse) return false;
-        if (!response.authResponse.accessToken) return false;
-        try {
-          props.dispatch(siginFacebook(response.authResponse.accessToken));
-        } catch {
-        }
-      },
-      {
-        scope: "public_profile , email ",
-      }
-    );
-  };
+  useEffect(() => {}, []);
   const { register, handleSubmit, errors } = useForm();
   const [loading, setLoading] = React.useState(false);
 
   const handleLogin = async (data) => {
-    const { userName, password } = data;
+    const { username, password } = data;
     try {
       setLoading(true);
-      let response = await props.dispatch(signin({ userName, password }));
+      await props.dispatch(signin({ username, password }));
       setLoading(false);
     } catch {
       setLoading(false);
     }
+  };
+  const handleLoginGoogle = async () => {
+    setLoading(true);
+    try {
+      await props.dispatch(signGoogle());
+    } catch (error) {}
+    setLoading(false);
   };
   return (
     <div className="form-login">
@@ -51,10 +39,10 @@ const FormularioLogin = (props) => {
           className="input"
           ref={register({ required: true })}
           placeholder="Usuario"
-          name="userName"
+          name="username"
         ></input>
         <label className="text-error-label">
-          {errors.userName ? "El usuario es requerido" : ""}
+          {errors.username ? "El usuario es requerido" : ""}
         </label>
         <input
           className="input"
@@ -68,17 +56,28 @@ const FormularioLogin = (props) => {
         </label>
         <div className="form-login__form__button">
           {!loading ? (
-            <Button
-              variant="contained"
-              className="form-login__form__button-button"
-              type="submit"
-              color="primary"
-            >
-              Iniciar Sesión
-            </Button>
+            <>
+              <Button
+                variant="contained"
+                className="form-login__form__button-button"
+                type="submit"
+                color="primary"
+              >
+                Iniciar Sesión
+              </Button>
+
+              <Button
+                variant="contained"
+                className="form-login__form__button-button"
+                onClick={handleLoginGoogle}
+                color="secondary"
+              >
+                Iniciar Google
+              </Button>
+            </>
           ) : (
-              <CircularProgress />
-            )}
+            <CircularProgress />
+          )}
         </div>
         <div
           style={{
@@ -92,33 +91,6 @@ const FormularioLogin = (props) => {
           </label>
         </div>
       </form>
-      {/* <FacebookLoginButton onClick={handleLoginFb}></FacebookLoginButton> */}
-      {/* <div className="inicio-fb">
-        <FacebookLogin
-          appId="539588920054034"
-          callback={responseFacebook}
-          fields="name,email,picture"
-          render={(renderProps) => (
-            <Button
-              className="btn-facebook"
-              variant="text"
-              startIcon={<FacebookIcon></FacebookIcon>}
-              onClick={renderProps.onClick}
-            >
-              Iniciar sesión con Facebook
-            </Button>
-          )}
-        />
-      </div> */}
-      <FacebookLoginButton onClick={handleLoginFb}></FacebookLoginButton>
-      <div className="form-login__footer">
-        <a to="/" className="form-login__footer-a">
-          <p>¿Has olvidado la contraseña?</p>
-        </a>
-        <p className="form-login__footer-p" onClick={props.handleMode}>
-          ¿No tienes una cuenta? Registrate
-        </p>
-      </div>
     </div>
   );
 };

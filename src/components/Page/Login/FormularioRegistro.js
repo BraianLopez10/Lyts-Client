@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, CircularProgress } from "@material-ui/core";
 import { connect } from "react-redux";
-import { signup, siginFacebook } from "../../../Redux/actions/actionUser";
+import { signup } from "../../../Redux/actions/actionUser";
 import { useForm } from "react-hook-form";
 import "./formularioRegister.scss";
 
@@ -9,12 +9,7 @@ const FormularioRegistro = (props) => {
   const { register, handleSubmit, errors } = useForm();
   const [error, setError] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
-  const [message , setMessage] = React.useState("")
-
-  const responseFacebook = (response) => {
-    if (!response.accessToken) return false;
-    props.dispatch(siginFacebook(response.accessToken));
-  }
+  const [message, setMessage] = React.useState("");
 
   const handleRegister = async (data) => {
     setLoading(true);
@@ -24,11 +19,10 @@ const FormularioRegistro = (props) => {
         signup({ userName, password, email, name })
       );
       if (response) {
-        setMessage("Registrado con exito")
+        setMessage("Registrado con exito");
       }
     } catch (err) {
-      setMessage("Error en tu registro")
-
+      setMessage("Error en tu registro");
     }
     setLoading(false);
   };
@@ -99,7 +93,7 @@ const FormularioRegistro = (props) => {
           </div>
         </form>
         <div className="form-register__footer">
-            {message !== "" && <p>{message}</p>}
+          {message !== "" && <p>{message}</p>}
           <p className="form-register__footer-p" onClick={props.handleMode}>
             ¿Tienes una cuenta? Inicia Sesión
           </p>

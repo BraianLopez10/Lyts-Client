@@ -4,20 +4,21 @@ import { connect } from "react-redux";
 import Page from "../Layout/Page";
 import Login from "../components/Page/Login";
 import { Chargue } from "../components/Chargue";
-import { setAuthorization } from "../Redux/actions/actionUi";
-import { getDataUserLogged } from "../Redux/actions/actionUser";
+import { setAuth, setId } from "../Redux/actions/auth";
+import { getDataUserLogged } from "../Redux/actions/auth";
 import { getToken } from "../services/AuthJwt";
 
-const ProtectedRoute = ({ component: Component, ui, dispatch, ...rest }) => {
+const ProtectedRoute = ({ component: Component, auth, dispatch, ...rest }) => {
   const [loading, setLoading] = React.useState(true);
   //Hasta q el id no este seteado no puede arrancar la app
   React.useEffect(() => {
     const isLogged = async () => {
       const idUser = getToken();
       if (idUser) {
-        if (!ui.authorization) {
+        if (!auth.authorization) {
           await dispatch(getDataUserLogged());
-          await dispatch(setAuthorization(true));
+          await dispatch(setAuth(true));
+          await dispatch(setId(idUser));
         }
       }
       setLoading(false);
@@ -25,7 +26,7 @@ const ProtectedRoute = ({ component: Component, ui, dispatch, ...rest }) => {
     isLogged();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ui.authorization]);
+  }, [auth.authorization]);
 
   return (
     <React.Fragment>
@@ -33,7 +34,7 @@ const ProtectedRoute = ({ component: Component, ui, dispatch, ...rest }) => {
         {...rest}
         render={(props) => {
           if (!loading) {
-            if (ui.authorization) {
+            if (auth.authorization) {
               return (
                 <Page {...props}>
                   <Component {...props}></Component>
@@ -53,7 +54,7 @@ const ProtectedRoute = ({ component: Component, ui, dispatch, ...rest }) => {
 
 const mapStateToProps = (state, props) => {
   return {
-    ui: state.ui,
+    auth: state.auth,
   };
 };
 

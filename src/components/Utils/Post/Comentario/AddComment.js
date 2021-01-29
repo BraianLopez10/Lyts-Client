@@ -5,7 +5,6 @@ import { Typography, Box, InputBase, ButtonBase } from "@material-ui/core";
 
 //Import Redux
 import { connect } from "react-redux";
-import { addComment as addCommentRedux } from "../../../../Redux/actions/actionData";
 import "./addcomment.scss";
 const AddComment = (props) => {
   const [valueInput, setValueInput] = React.useState("");
@@ -14,23 +13,24 @@ const AddComment = (props) => {
     setValueInput(e.target.value);
   };
 
-  const addComment = () => {
-    if (valueInput !== "") {
-      props.dispatch(
-        addCommentRedux(
-          props.id,
-          valueInput,
-          props.userLogged.userName,
-          props.userLogged.img
-        )
-      );
-      setValueInput("");
-    }
-  };
+  // const addComment = () => {
+  //   if (valueInput !== "") {
+  //     props.dispatch(
+  //       addCommentRedux(
+  //         props.id,
+  //         valueInput,
+  //         props.userLogged.userName,
+  //         props.userLogged.img
+  //       )
+  //     );
+  //     setValueInput("");
+  //   }
+  // };
 
   const keyPress = (event) => {
     if (event.keyCode === 13) {
-      addComment();
+      // addComment();
+      console.log("Add comment");
     }
   };
   const styles = {
@@ -51,7 +51,9 @@ const AddComment = (props) => {
 
       <ButtonBase
         color="primary"
-        onClick={addComment}
+        onClick={() => {
+          console.log("Add comment");
+        }}
         disabled={valueInput === ""}
         style={valueInput === "" ? { color: "#9c9c9c" } : { color: "#3897F1" }}
       >
@@ -64,7 +66,7 @@ const AddComment = (props) => {
 };
 const mapStateToProps = (state, props) => {
   return {
-    userLogged: state.userLogged,
+    auth: state.auth,
   };
 };
 export default connect(mapStateToProps, null)(AddComment);

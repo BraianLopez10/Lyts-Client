@@ -21,8 +21,6 @@
   }
   &__content {
     bottom: 0;
-    height: 34px;
-    padding: 13px 0 4px;
     position: fixed;
     width: 100%;
     z-index: 5000;
@@ -32,13 +30,24 @@
       &-ul {
         margin: 0;
         padding: 0;
+        height: 50px;
         display: flex;
+        align-items: center;
         width: 100%;
-        box-sizing: border-box;
-        padding: 0 30px;
         justify-content: space-between;
+        padding: 0 20px;
+      }
+      &-li:nth-child(5) {
+        padding: 0;
       }
       &-li {
+        a {
+          text-decoration: none;
+        }
+      }
+      &-li {
+        padding-top: 8px;
+        display: inline-block;
         list-style: none;
         a {
           text-decoration: none;

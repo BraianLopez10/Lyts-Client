@@ -30,7 +30,7 @@ const Page = (props) => {
 };
 const mapStateToProps = (state, props) => {
   return {
-    idUserLogged: state.global.idUserLogged,
+    idUserLogged: state.auth.id,
   };
 };
 export default connect(mapStateToProps, null)(Page);

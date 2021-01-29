@@ -2,7 +2,7 @@ import React from "react";
 import { Typography, Box } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
-import './oneComment.scss';
+import "./oneComment.scss";
 
 export default function Comment(props) {
   return (
@@ -10,10 +10,7 @@ export default function Comment(props) {
       <Link to={"/" + props.username} className="url url-comment">
         {props.username}
       </Link>{" "}
-      <p>
-        {props.content}
-      </p>
+      <p>{props.content}</p>
     </div>
-
   );
 }

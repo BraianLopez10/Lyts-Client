@@ -3,22 +3,9 @@ import React, { useEffect, useState } from "react";
 import { Avatar } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import ButtonFollow from "../Utils/ButtonFollow";
-import api from "../../services/consultaApi";
-
 import "./tofollow.scss";
-function ToFollow(props) {
-  const [toFollow, setToFollow] = useState([]);
 
-  useEffect(() => {
-    async function getData() {
-      try {
-        let result = await api.userToFollow();
-        setToFollow(result.data);
-      } catch {}
-    }
-    getData();
-  }, []);
-
+function ToFollow({ toFollow }) {
   return (
     <div className="wrap-list-to-follow">
       <p className="sugerencias">Sugerencias para ti</p>
@@ -27,18 +14,18 @@ function ToFollow(props) {
           return (
             <div className="wrap-to-follow" key={index}>
               <div className="name-avatar">
-                <Link to={"/" + follow.userName} className="enlace-to-follow">
+                <Link to={"/" + follow.username} className="enlace-to-follow">
                   <Avatar
                     src={follow.img}
                     style={{ width: "30px", height: "30px" }}
                   ></Avatar>
                 </Link>
-                <p className="nombre-to-follow">{follow.userName}</p>
+                <p className="nombre-to-follow">{follow.username}</p>
               </div>
               <ButtonFollow
                 variant="text"
                 color="blue"
-                userPerfil={follow}
+                idUser={follow._id}
               ></ButtonFollow>
             </div>
           );

@@ -37,7 +37,8 @@
   outline: none;
   height: 50px;
 }
-.wrapper-app {
+* {
+  box-sizing: border-box;
 }
 .text-error-label {
   height: 22px;

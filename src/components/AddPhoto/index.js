@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import "./index.scss";
 import { Button } from "@material-ui/core";
-import { addPost } from "../../Redux/actions/actionUser";
+// import { addPost } from "../../Redux/actions/";
 import { connect } from "react-redux";
 
 const AddPhoto = (props) => {
@@ -29,12 +29,13 @@ const AddPhoto = (props) => {
     e.preventDefault();
     if (!text) return false;
     let formData = new FormData(form.current);
-    props
-      .dispatch(addPost(formData))
-      .then(() => {
-        window.location.reload();
-      })
-      .catch(() => {});
+    console.log(formData, "Subir Foto");
+    // props
+    //   .dispatch(addPost(formData))
+    //   .then(() => {
+    //     window.location.reload();
+    //   })
+    //   .catch(() => {});
   };
 
   if (!props.open) return false;

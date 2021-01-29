@@ -1,0 +1,21 @@
+.info-header {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  @media screen and (min-width: 768px) {
+    & {
+      display: flex;
+      flex-direction: row;
+    }
+  }
+  p {
+    font-weight: lighter;
+    margin: 0;
+    margin-right: 25px;
+    cursor: pointer;
+  }
+  p:hover {
+    color: red;
+  }
+}

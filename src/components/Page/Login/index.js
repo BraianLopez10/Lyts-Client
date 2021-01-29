@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
 import FormularioLogin from "./FormularioLogin";
-import FormularioRegistro from "./FormularioRegistro";
+// import FormularioRegistro from "./FormularioRegistro";
 
 import "./index.scss";
 
@@ -26,7 +26,8 @@ function Login(props) {
         {modeLogin === "login" ? (
           <FormularioLogin handleMode={handleMode}></FormularioLogin>
         ) : (
-          <FormularioRegistro handleMode={handleMode} />
+          // <FormularioRegistro handleMode={handleMode} />
+          <h1>Registro</h1>
         )}
       </Grid>
     </Grid>
