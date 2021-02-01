@@ -51,6 +51,7 @@ export function reducerAuth(state = initialState, action) {
         username: action.payload.username,
         name: action.payload.name,
         img: action.payload.img,
+        id: action.payload.id,
         follows: action.payload.follows,
       };
     default:

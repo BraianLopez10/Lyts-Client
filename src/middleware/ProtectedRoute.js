@@ -2,8 +2,7 @@ import React from "react";
 import { Route } from "react-router-dom";
 import { connect } from "react-redux";
 import Page from "../Layout/Page";
-import Login from "../components/Page/Login";
-import { Chargue } from "../components/Chargue";
+import Login from "../page/Login";
 import { setAuth, setId } from "../Redux/actions/auth";
 import { getDataUserLogged } from "../Redux/actions/auth";
 import { getToken } from "../services/AuthJwt";
@@ -43,8 +42,6 @@ const ProtectedRoute = ({ component: Component, auth, dispatch, ...rest }) => {
             } else {
               return <Login></Login>;
             }
-          } else {
-            return <Chargue></Chargue>;
           }
         }}
       ></Route>

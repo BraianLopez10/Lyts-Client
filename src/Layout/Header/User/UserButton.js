@@ -1,9 +1,9 @@
 import React from "react";
-import { ButtonBase, Avatar, Button } from "@material-ui/core";
+import { Avatar, Button } from "@material-ui/core";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
-import Logout from "../../../components/Utils/Logout";
+import Logout from "../../../components/Profile/Logout";
 import Grow from "@material-ui/core/Grow";
 import Paper from "@material-ui/core/Paper";
 import Popper from "@material-ui/core/Popper";
@@ -22,7 +22,6 @@ function ExploreButton(props) {
     if (anchorRef.current && anchorRef.current.contains(event.target)) {
       return;
     }
-
     setOpen(false);
   };
 
@@ -44,7 +43,7 @@ function ExploreButton(props) {
   }, [open]);
 
   return (
-    <ButtonBase
+    <div
       ref={anchorRef}
       className="link-header"
       aria-controls={open ? "menu-list-grow" : undefined}
@@ -79,7 +78,7 @@ function ExploreButton(props) {
                     <Link
                       size="small"
                       color="secondary"
-                      to={"/" + props.userLogged.userName}
+                      to={"/" + props.userLogged.username}
                       style={{ textDecoration: "none " }}
                     >
                       <Button
@@ -101,7 +100,7 @@ function ExploreButton(props) {
           </Grow>
         )}
       </Popper>
-    </ButtonBase>
+    </div>
   );
 }
 const mapStateToProps = (state) => ({

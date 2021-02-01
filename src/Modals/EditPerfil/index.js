@@ -77,7 +77,7 @@ const EditPerfil = (props) => {
               alignItems: "center",
             }}
           >
-            <CircularProgress size={100} color="white"></CircularProgress>
+            <CircularProgress size={100}></CircularProgress>
           </div>
         ) : (
           <>
@@ -108,6 +108,7 @@ const EditPerfil = (props) => {
                   onClick={openDialog}
                 >
                   <img
+                    alt={imgSrc}
                     className="modal-edit-p__content__section__form__image-img"
                     src={imgSrc}
                     style={{ objectFit: "cover" }}

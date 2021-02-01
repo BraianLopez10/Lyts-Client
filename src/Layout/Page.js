@@ -1,11 +1,13 @@
-import React, { useEffect, Component, Children } from "react";
+import React from "react";
 
 import Header from "./Header/Header";
 import HeaderMobile from "./Header/HeaderMobile";
 import { useMediaQuery } from "react-responsive";
 import { connect } from "react-redux";
+import AddPhoto from "../components/Post/AddPost";
+
 import "./page.scss";
-import AddPhoto from "../components/AddPhoto";
+
 const Page = (props) => {
   const { children } = props;
   const [open, setOpen] = React.useState(false);

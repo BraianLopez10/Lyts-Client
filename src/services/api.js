@@ -15,7 +15,7 @@ if (process.env.NODE_ENV === "production") {
 setHeader();
 
 const disLike = (id) => {
-  const url = `${prodUrl}api/v1/like/${id}`;
+  const url = `${prodUrl}api/v1/post/like/${id}`;
   return axios.delete(url);
 };
 
@@ -29,17 +29,23 @@ const getPostFollows = () => {
 };
 
 const like = (id) => {
-  return axios.post(`${prodUrl}api/v1/like`, {
+  return axios.post(`${prodUrl}api/v1/post/like/${id}`, {
     data: {
       post: id,
     },
   });
 };
 
-const addComment = (idPost, comment) => {
-  return axios.post(`${prodUrl}api/v1/comment`, {
-    post: idPost,
+const addComment = (idPost, comment, username, img) => {
+  return axios.post(`${prodUrl}api/v1/post/comment/${idPost}`, {
     content: comment,
+    username,
+    img,
+  });
+};
+const deleteComment = (idPost, idComment) => {
+  return axios.delete(`${prodUrl}api/v1/post/comment/${idPost}`, {
+    idComment: idComment,
   });
 };
 
@@ -74,7 +80,6 @@ const getUser = (id) => {
 
 const getPost = (id) => {
   let url = `${prodUrl}api/v1/post/${id}`;
-
   return axios.get(url);
 };
 
@@ -123,14 +128,11 @@ const addPost = (data) => {
 };
 
 const deletePost = (idPost) => {
-  let url = `${prodUrl}api/v1/post`;
+  let url = `${prodUrl}api/v1/post/${idPost}`;
 
   return axios({
     method: "DELETE",
     url,
-    data: {
-      idPost,
-    },
   });
 };
 const search = (userName) => {
@@ -170,6 +172,7 @@ export default {
   getPostFollows,
   like,
   addComment,
+  deleteComment,
   signIn,
   search,
   signup,

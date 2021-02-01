@@ -3,6 +3,7 @@ import {
   ADD_FOLLOW,
   DELETE_FOLLOW,
   UPDATE_USER,
+  ADD_PHOTO,
 } from "../actions/typeAction";
 
 const initialState = {
@@ -21,6 +22,12 @@ const initialState = {
 
 export default function reducerAnyPerfil(state = initialState, action) {
   switch (action.type) {
+    case ADD_PHOTO: {
+      return {
+        ...state,
+        posts: [...state.posts, action.payload],
+      };
+    }
     case ADD_FOLLOW:
       return {
         ...state,

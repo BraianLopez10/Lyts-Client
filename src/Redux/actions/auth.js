@@ -54,8 +54,30 @@ export const signup = (data) => {
     return new Promise((resolve, reject) => {
       api
         .signup(data)
-        .then((resp) => {
-          resolve(resp.data.messague);
+        .then((response) => {
+          localStorage.setItem("token", "Bearer " + response.data.body.token);
+          setHeader();
+          dispatch({
+            type: SET_PERFIL,
+            payload: {
+              user: response.data.body.user,
+            },
+          });
+          dispatch({
+            type: SET_AUTH_DATA,
+            payload: {
+              username: response.data.body.user.username,
+              id: response.data.body.user._id,
+              name: response.data.body.user.name,
+              img: response.data.body.user.img,
+              follows: response.data.body.user.follows,
+            },
+          });
+          dispatch({
+            type: SET_AUTH,
+            payload: true,
+          });
+          resolve();
         })
         .catch((err) => {
           reject();
@@ -79,6 +101,7 @@ export const signin = (data) => {
         type: SET_AUTH_DATA,
         payload: {
           username: response.data.body.user.username,
+          id: response.data.body.user._id,
           name: response.data.body.user.name,
           img: response.data.body.user.img,
           follows: response.data.body.user.follows,

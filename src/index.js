@@ -9,10 +9,10 @@ import "./index.scss";
 import "moment/locale/es";
 
 //Componentes
-import Home from "./components/Page/Home";
-import PerfilAny from "./components/Page/Perfil-Any";
-
-// import FullPost from "./components/Page/FullPost/FullPost";
+import Home from "./page/Home";
+import PerfilAny from "./page/Perfil-Any";
+import FullPost from "./page/FullPost";
+// import FullPost from "./page/FullPost/FullPost";
 import ProtectedRoute from "./middleware/ProtectedRoute";
 //Redux
 import { Provider } from "react-redux";
@@ -43,11 +43,11 @@ render(
       <BrowserRouter>
         <Switch>
           <ProtectedRoute exact path="/" component={Home}></ProtectedRoute>
-          {/* <ProtectedRoute
+          <ProtectedRoute
             exact
             path="/p/:idPost"
             component={FullPost}
-          ></ProtectedRoute> */}
+          ></ProtectedRoute>
           <ProtectedRoute
             exact
             path="/explorer"
