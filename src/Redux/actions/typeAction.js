@@ -16,3 +16,4 @@ export const DELETE_COMMENT = "DELETE_COMMENT";
 export const SET_POST = "SET_POST";
 export const ADD_PHOTO = "ADD_PHOTO";
 export const DELETE_PHOTO = "DELETE_PHOTO";
+export const SET_EXPLORER = "SET_EXPLORER";

@@ -1,14 +1,15 @@
-import React from "react";
-import { Button, CircularProgress } from "@material-ui/core";
+import React, { useState } from "react";
+import { Button, CircularProgress, Typography } from "@material-ui/core";
 import { connect } from "react-redux";
 import { signup } from "../../Redux/actions/auth";
 import { useForm } from "react-hook-form";
-import "./formularioRegister.scss";
+import "./style-forms.scss";
 
 const FormularioRegistro = (props) => {
   const { register, handleSubmit, errors } = useForm();
-  const [loading, setLoading] = React.useState(false);
-
+  const [loading, setLoading] = useState(false);
+  const [error, seterror] = useState("");
+  console.log(errors);
   const handleRegister = async (data) => {
     setLoading(true);
     try {
@@ -20,55 +21,72 @@ const FormularioRegistro = (props) => {
 
   return (
     <div>
-      <div className="form-register">
-        <div className="form-register__title">
+      <div className="box-page-login">
+        <div className="box-page-login__title">
           <h2 className="title-h2">Lyts</h2>
           <p className="copy">Regístrate para ver fotos de tus amigos</p>
         </div>
         <form
-          className="form-register__content"
+          className="box-page-login__form"
           onSubmit={handleSubmit(handleRegister)}
         >
-          <input
-            placeholder="Usuario"
-            className="input"
-            ref={register({ required: true, min: "6" })}
-            name="username"
-          ></input>
-          <label className="text-error-label">
-            {errors.username ? "El usuario es requerido" : ""}
-          </label>
-          <input
-            placeholder="Nombre"
-            className="input"
-            ref={register({ required: true })}
-            name="name"
-          ></input>
-          <label className="text-error-label">
-            {errors.name ? "El nombre es requerido" : ""}
-          </label>
-          <input
-            placeholder="Email"
-            className="input"
-            ref={register({ required: true, pattern: /^\S+@\S+$/i })}
-            type="email"
-            name="email"
-          ></input>
-          <label className="text-error-label">
-            {errors.email ? "El email es requerido" : ""}
-          </label>
-          <input
-            placeholder="Contraseña"
-            className="input"
-            ref={register({ required: true })}
-            type="password"
-            name="password"
-          ></input>
-          <label className="text-error-label">
-            {errors.password ? "El password es requerido" : ""}
-          </label>
+          <div className="box-page-login__form__group">
+            <input
+              placeholder="Usuario"
+              className="input"
+              min="6"
+              ref={register({ required: true, minLength: 6, maxLength: 40 })}
+              name="username"
+            ></input>
+            <label>
+              <Typography variant="caption" className="text-error-label">
+                {errors.username ? "Min 8 caracteres" : ""}
+              </Typography>
+            </label>
+          </div>
+          <div className="box-page-login__form__group">
+            <input
+              placeholder="Nombre"
+              className="input"
+              ref={register({ required: true })}
+              name="name"
+            ></input>
+            <label>
+              <Typography variant="caption" className="text-error-label">
+                {errors.name ? "El nombre es requerido" : ""}
+              </Typography>
+            </label>
+          </div>
+          <div className="box-page-login__form__group">
+            <input
+              placeholder="Email"
+              className="input"
+              ref={register({ required: true, pattern: /^\S+@\S+$/i })}
+              type="email"
+              name="email"
+            ></input>
+            <label>
+              <Typography variant="caption" className="text-error-label">
+                {errors.email ? "El email es requerido" : ""}
+              </Typography>
+            </label>
+          </div>
+          <div className="box-page-login__form__group">
+            <input
+              placeholder="Contraseña"
+              className="input"
+              ref={register({ required: true, minLength: 8 })}
+              type="password"
+              name="password"
+            ></input>
+            <label>
+              <Typography variant="caption" className="text-error-label">
+                {errors.password ? "Min 8 caracteres" : ""}
+              </Typography>
+            </label>
+          </div>
 
-          <div className="form-register__content__button">
+          <div className="box-page-login__form__button">
             {!loading ? (
               <Button
                 variant="contained"
@@ -83,10 +101,11 @@ const FormularioRegistro = (props) => {
             )}
           </div>
         </form>
-        <div className="form-register__footer">
-          <p className="form-register__footer-p" onClick={props.handleMode}>
-            ¿Tienes una cuenta? Inicia Sesión
-          </p>
+        <div className="box-page-login__form__footer">
+          <p onClick={props.handleMode}>¿Tienes una cuenta? Inicia Sesión</p>
+          <label className="text-error-back">
+            <Typography variant="caption">{error}</Typography>
+          </label>
         </div>
       </div>
     </div>

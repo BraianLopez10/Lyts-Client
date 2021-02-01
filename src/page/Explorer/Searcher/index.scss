@@ -1,0 +1,27 @@
+.wrap-searcher {
+  max-width: 370px;
+  margin: auto;
+  .form-busqueda {
+    width: 100%;
+  }
+  .form_group {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: center;
+    input {
+      height: 40px;
+      width: 100%;
+      outline: none;
+      border: none;
+      border: 1px solid black;
+      border-radius: 5px;
+      padding-left: 10px;
+    }
+    button {
+      margin-left: 5px;
+      height: 40px;
+    }
+  }
+}

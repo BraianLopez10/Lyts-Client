@@ -27,11 +27,11 @@ const Header = (props) => {
           >
             <PhotoCameraIcon style={{ fontSize: "1.1em" }}></PhotoCameraIcon>
           </li>
-          <li className="header-desktop__content__menu-li">
+          <Link to="/explorer" className="header-desktop__content__menu-li">
             <ExploreOutlinedIcon
               style={{ fontSize: "1.1em" }}
             ></ExploreOutlinedIcon>
-          </li>
+          </Link>
           <li className="header-desktop__content__menu-li">
             <FavoriteBorderOutlinedIcon
               style={{ fontSize: "1.1em" }}

@@ -19,6 +19,10 @@ function Home({ home, dispatch, ...props }) {
     getDatos();
   }, [dispatch]);
 
+  const mezclarPost = () => {
+    const concatePosts = home.postsFollow.concat(home.postUser);
+    return concatePosts;
+  };
   return (
     <section className="section-home">
       {load ? (
@@ -31,7 +35,7 @@ function Home({ home, dispatch, ...props }) {
         <>
           <div className="section-home__center">
             <BoxAmigos></BoxAmigos>
-            <Posts posts={home.postsFollow}></Posts>
+            <Posts posts={mezclarPost()}></Posts>
           </div>
           <div className="section-home__right">
             <div className="section-home__right__absulute">

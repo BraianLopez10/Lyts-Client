@@ -113,7 +113,7 @@ export const signin = (data) => {
       });
       return Promise.resolve();
     } catch (error) {
-      return Promise.reject();
+      return Promise.reject(error.response.data.message || "Error");
     }
   };
 };

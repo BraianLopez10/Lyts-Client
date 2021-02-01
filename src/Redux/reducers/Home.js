@@ -11,6 +11,7 @@ const initialState = {
   follows: [],
   postsFollow: [],
   toFollow: [],
+  postUser: [],
 };
 
 export default function reducerHome(state = initialState, action) {

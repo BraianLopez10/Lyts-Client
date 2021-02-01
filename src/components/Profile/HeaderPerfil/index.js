@@ -22,7 +22,9 @@ export const HeaderPerfil = ({ userPerfil, isAdmin }) => {
           src={userPerfil.img}
           style={{ width: "130px", height: "130px" }}
         ></Avatar>
-        {!isAdmin && <ButtonFollow idUser={userPerfil._id}></ButtonFollow>}
+        <div style={{ marginTop: "5px" }}>
+          {!isAdmin && <ButtonFollow idUser={userPerfil._id}></ButtonFollow>}
+        </div>
       </div>
       <div className="header-perfil__content">
         {isAdmin && (
@@ -36,7 +38,9 @@ export const HeaderPerfil = ({ userPerfil, isAdmin }) => {
         <div className="header-perfil__content__info">
           <p>@{userPerfil.username}</p>
           <p>{userPerfil.name}</p>
-          <p>{userPerfil.bio || "Esto es un biografia de ejemplo"}</p>
+          <p style={{ fontFamily: "cursive" }}>
+            {userPerfil.bio || "Agrega una biografía"}
+          </p>
         </div>
         <div className="header-perfil__content__stats">
           <EstadisticaUser userPerfil={userPerfil}></EstadisticaUser>

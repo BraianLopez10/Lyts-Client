@@ -8,6 +8,7 @@ import {
   UPDATE_USER,
   ADD_PHOTO,
   DELETE_PHOTO,
+  SET_EXPLORER,
 } from "./typeAction";
 import api from "../../services/api";
 
@@ -90,7 +91,6 @@ export const deletePost = (idPost) => {
     });
   };
 };
-
 export const addComment = (idPost, comment, username, img) => {
   return async (dispatch) => {
     const resp = await api.addComment(idPost, comment, username, img);
@@ -118,5 +118,19 @@ export const deleteComment = (idPost, idComment) => {
         idComment: resp.data.body.idComment,
       },
     });
+  };
+};
+
+export const getExplorer = () => {
+  return async (dispatch) => {
+    try {
+      const data = await api.getExplorer();
+      dispatch({
+        type: SET_EXPLORER,
+        payload: data.data.body,
+      });
+      return Promise.resolve();
+    } catch (error) {}
+    return Promise.reject();
   };
 };

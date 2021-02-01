@@ -12,7 +12,7 @@ import "moment/locale/es";
 import Home from "./page/Home";
 import PerfilAny from "./page/Perfil-Any";
 import FullPost from "./page/FullPost";
-// import FullPost from "./page/FullPost/FullPost";
+import Explorer from "./page/Explorer";
 import ProtectedRoute from "./middleware/ProtectedRoute";
 //Redux
 import { Provider } from "react-redux";
@@ -51,7 +51,7 @@ render(
           <ProtectedRoute
             exact
             path="/explorer"
-            component={<h1>Explorer</h1>}
+            component={Explorer}
           ></ProtectedRoute>
           <ProtectedRoute
             exact

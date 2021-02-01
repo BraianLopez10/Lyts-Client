@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 function Logout(props) {
   const handleLogout = async () => {
     await props.dispatch(logout());
-
     window.location.reload();
   };
 
@@ -14,7 +13,7 @@ function Logout(props) {
       size="small"
       color="primary"
       fullWidth
-      variant="outlined"
+      variant="contained"
       onClick={handleLogout}
       href="/"
     >

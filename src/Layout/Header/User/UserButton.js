@@ -85,7 +85,7 @@ function ExploreButton(props) {
                         size="small"
                         color="primary"
                         fullWidth
-                        variant="outlined"
+                        variant="contained"
                       >
                         Perfil
                       </Button>

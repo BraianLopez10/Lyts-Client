@@ -3,7 +3,8 @@ import ExploreOutlinedIcon from "@material-ui/icons/Explore";
 import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorder";
 import PhotoCameraIcon from "@material-ui/icons/PhotoCamera";
 import HomeOutlinedIcon from "@material-ui/icons/Home";
-import { Avatar } from "@material-ui/core";
+import { Avatar, Button } from "@material-ui/core";
+import Logout from "../../components/Profile/Logout";
 import { Link } from "react-router-dom";
 import "./headerMobile.scss";
 import { connect } from "react-redux";
@@ -12,7 +13,12 @@ const HeaderMobile = (props) => {
   return (
     <div className="header-mobile">
       <div className="header-mobile__header">
-        <h3 className="header-mobile__header-h3">Lyts</h3>
+        <Link style={{ textDecoration: "none", color: "white" }} to="/">
+          <h3 className="header-mobile__header-h3">Lyts</h3>
+        </Link>
+        <div style={{ position: "absolute", right: "10px" }}>
+          <Logout></Logout>
+        </div>
       </div>
       <div className="header-mobile__content">
         <div className="header-mobile__content__menu">
