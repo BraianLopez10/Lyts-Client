@@ -1,16 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import "./index.scss";
 import { Button } from "@material-ui/core";
 import { SearchOutlined } from "@material-ui/icons";
 export const Searcher = () => {
+  const [input, setInput] = useState("");
   const handleForm = (e) => {
     e.preventDefault();
+  };
+  const handleChange = (e) => {
+    setInput(e.target.value);
   };
   return (
     <div className="wrap-searcher">
       <form className="form-busqueda" onSubmit={handleForm}>
         <div className="form_group">
-          <input placeholder="usuario" type="text"></input>
+          <input
+            value={input}
+            onChange={handleChange}
+            placeholder="usuario"
+            type="text"
+          ></input>
           <Button variant="contained" color="primary" type="submit">
             <SearchOutlined></SearchOutlined>
           </Button>

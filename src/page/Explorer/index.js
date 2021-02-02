@@ -18,17 +18,18 @@ function Explorer({ dispatch, explorer, ...props }) {
   }, [dispatch]);
   return (
     <div>
+      <Typography variant="body">Descubre gente nueva</Typography>
       <Searcher />
-      <Grid container direction="column" spacing={5}>
-        <Grid item style={{ height: "300px", overflowY: "scroll" }}>
-          <Typography variant="h5">Personas para seguir</Typography>
+      <div>
+        <div style={{ height: "300px", overflowY: "scroll" }}>
+          <Typography variant="body1">Personas para seguir</Typography>
           <CardList users={explorer.users}></CardList>
-        </Grid>
-        <Grid item style={{ marginTop: "50px" }}>
-          <Typography variant="h5">Publicaciones recientes</Typography>
+        </div>
+        <div style={{ marginTop: "50px" }}>
+          <Typography variant="body1">Publicaciones recientes</Typography>
           <ExplorerPost posts={explorer.posts}></ExplorerPost>
-        </Grid>
-      </Grid>
+        </div>
+      </div>
     </div>
   );
 }
