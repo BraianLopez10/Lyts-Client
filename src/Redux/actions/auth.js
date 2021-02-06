@@ -7,6 +7,7 @@ import {
 } from "./typeAction";
 import api from "../../services/api";
 import { setHeader } from "../../services/AuthJwt";
+import { BrowserRouter } from "react-router-dom";
 
 export const getDataUserLogged = () => {
   return async (dispatch) => {

@@ -80,7 +80,7 @@ const FormularioLogin = (props) => {
               >
                 Iniciar Sesión
               </Button>
-              <Button
+              {/* <Button
                 variant="contained"
                 className="form-login__form__button-button"
                 onClick={() =>
@@ -90,7 +90,7 @@ const FormularioLogin = (props) => {
                 // href=
               >
                 Iniciar Google
-              </Button>
+              </Button> */}
             </>
           ) : (
             <CircularProgress />

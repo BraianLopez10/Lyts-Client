@@ -4,7 +4,7 @@ import { setHeader } from "./AuthJwt";
 let prodUrl = "";
 
 if (process.env.NODE_ENV === "development") {
-  prodUrl = "http://192.168.100.4:4000/";
+  prodUrl = "http://localhost:4000/";
 }
 if (process.env.NODE_ENV === "production") {
   prodUrl = "https://lyts-backend.herokuapp.com/";
@@ -156,8 +156,8 @@ const getFeed = () => {
 };
 
 const signGoogle = () => {
-  // let url = `${prodUrl}auth/google`;
-  let url = "/auth/google";
+  let url = `${prodUrl}auth/google`;
+  // let url = "/auth/google";
   return axios(url, {
     withCredentials: true,
   });
